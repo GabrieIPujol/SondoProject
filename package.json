@@ -2,7 +2,7 @@
   "name": "telaloginsondo",
   "private": true,
   "version": "0.0.0",
-  "homepage": "https://GabrieIPujol.github.io/telaloginsondo",
+  "homepage": "https://GabrieIPujol.github.io/SondoProject",
   "type": "module",
   "scripts": {
     "dev": "vite",
