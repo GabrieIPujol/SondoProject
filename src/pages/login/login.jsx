@@ -12,6 +12,19 @@ const login = () => {
         e.preventDefault();
     }
 
+    const email = "gabriel.velosa@sondotecnica.com.br";
+    const pass = "123456";
+
+    const confirmLogin = () => {
+        if(username === email && password === pass){
+            alert("Login efetuado com sucesso!");
+        } else if (username === "" || password === ""){
+            alert("Por favor, preencha todos os campos.");
+        } else {
+            alert("Email ou senha incorretos.");
+        }
+    }
+
     return (
         <div className="container">
             <form onSubmit={handleSubmit}>
@@ -33,7 +46,7 @@ const login = () => {
                     <a href="#">Esqueceu a senha?</a>
                 </div>
 
-                <button>Entrar</button>
+                <button onClick={confirmLogin}>Entrar</button>
 
                 <div className="signup-link">
                     <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
