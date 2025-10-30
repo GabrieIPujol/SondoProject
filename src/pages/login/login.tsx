@@ -4,23 +4,32 @@ import { CiWarning } from "react-icons/ci";
 import {useState} from 'react';
 import './/login.css';
 import '../../index.css';
+import { useNavigate } from 'react-router-dom';
 
-const login = () => {
+const login:React.FC = () => {
+    const navigate = useNavigate()
+    function onCreateAccountClick(){
+        navigate('create-account')
+    }
+    
+    function onForgetPassClick(){
+        navigate('forget-pass')
+    }
 
-    const [username, setUsername] = useState("");
-    const [password, setPassword] = useState("");
-    const [showError, setShowError] = useState(false);
-    const [showErrorMiss, setShowErrorMiss] = useState(false);
+    const [username, setUsername] = useState<string>("");
+    const [password, setPassword] = useState<string>("");
+    const [showError, setShowError] = useState<boolean>(false);
+    const [showErrorMiss, setShowErrorMiss] = useState<boolean>(false);
 
     const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
         console.log("Envio");
         e.preventDefault();
     };
 
-    const email = "gabriel.velosa@sondotecnica.com.br";
-    const pass = "123456";
+    const email:string = "gabriel.velosa@sondotecnica.com.br";
+    const pass:string = "123456";
 
-    const confirmLogin = () => {
+    const confirmLogin = ():void => {
         setShowError(false);
         if(username === email && password === pass){
             alert("Login efetuado com sucesso!");
@@ -34,7 +43,7 @@ const login = () => {
     };
 
     return (
-        <div className="container">
+        <div className='container'>
             <form onSubmit={handleSubmit}>
                 <h1>Acesse o sistema</h1>
                 <div className='input-field'>
@@ -42,22 +51,22 @@ const login = () => {
                     <FaUser className='icon' />
                 </div>
                 <div className='input-field'>
-                    <input type="password" placeholder='Senha' onChange={(e) => setPassword(e.target.value)}/>
+                    <input type='password' placeholder='Senha' onChange={(e) => setPassword(e.target.value)}/>
                     <FaLock className='icon' />
                 </div>
 
                 <div className='recall-forget'>
                     <label>
-                        <input type="checkbox" />
+                        <input type='checkbox' />
                         Lembre de mim
                     </label>
-                    <a href="#">Esqueceu a senha?</a>
+                    <button className='link' onClick={onForgetPassClick}>Esqueceu a senha?</button>
                 </div>
 
-                <button onClick={confirmLogin}>Entrar</button>
+                <button className='btn' onClick={confirmLogin}>Entrar</button>
 
-                <div className="signup-link">
-                    <p>Não tem uma conta? <a href="#">Cadastre-se</a></p>
+                <div className='signup-link'>
+                    <p>Não tem uma conta? <button className='link' onClick={onCreateAccountClick}>Cadastre-se</button></p>
                 </div>
 
                 {showError && (
