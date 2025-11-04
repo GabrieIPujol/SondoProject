@@ -5,6 +5,7 @@ import {useState} from 'react';
 import './/login.css';
 import '../../index.css';
 import { useNavigate } from 'react-router-dom';
+import { z } from 'zod';
 
 const login:React.FC = () => {
     const navigate = useNavigate()
@@ -17,7 +18,7 @@ const login:React.FC = () => {
     }
 
     const [username, setUsername] = useState<string>("");
-    const [password, setPassword] = useState<string>("");
+    const [password, setPassword] = useState<string | number>("");
     const [showError, setShowError] = useState<boolean>(false);
     const [showErrorMiss, setShowErrorMiss] = useState<boolean>(false);
 
@@ -27,17 +28,27 @@ const login:React.FC = () => {
     };
 
     const email:string = "gabriel.velosa@sondotecnica.com.br";
-    const pass:string = "123456";
+    let emailSchema = z.email('O email deve pertencer ao domínio @sondotecnica.com.br' ).includes('@sondotecnica.com.br');
+    const emailValidation = emailSchema.safeParse(email);
+
+    const pass:string | number = "123456"; 
+    let passwordSchema = z.string().min(6, 'A senha precisa ter no mínimo 6 caracteres').max(12, 'A senha pode ter no máximo 12 caracteres');
+    const passwordValidation = passwordSchema.safeParse(pass);
 
     const confirmLogin = ():void => {
         setShowError(false);
-        if(username === email && password === pass){
-            alert("Login efetuado com sucesso!");
-        } else if (username === "" || password === ""){
-            setShowErrorMiss(true);
+        setShowError(false);
+        if (username === "" || password === ""){ 
             setShowError(false);
+            setShowErrorMiss(true);
+        } else if (!emailValidation.success){
+            alert(emailValidation.error.message);
+        } else if (!passwordValidation.success){
+            alert(passwordValidation.error.message);
+        } else if (username === email && password === pass){
+                alert("Login efetuado com sucesso!");
         } else {
-            setShowError(true);
+            setShowError(true); 
             setShowErrorMiss(false);
         }
     };
