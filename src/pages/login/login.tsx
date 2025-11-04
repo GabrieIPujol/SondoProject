@@ -1,6 +1,7 @@
 import {FaUser, FaLock} from 'react-icons/fa';
 import { MdOutlineErrorOutline } from "react-icons/md";
 import { CiWarning } from "react-icons/ci";
+import { IoIosWarning } from "react-icons/io";
 import {useState} from 'react';
 import './/login.css';
 import '../../index.css';
@@ -21,6 +22,8 @@ const login:React.FC = () => {
     const [password, setPassword] = useState<string | number>("");
     const [showError, setShowError] = useState<boolean>(false);
     const [showErrorMiss, setShowErrorMiss] = useState<boolean>(false);
+    const [emailValidationError, setEmailValidationError] = useState<boolean>(false);
+    const [passwordValidationError, setPasswordValidationError] = useState<boolean>(false);
 
     const handleSubmit = (e:React.FormEvent<HTMLFormElement>) => {
         console.log("Envio");
@@ -28,30 +31,43 @@ const login:React.FC = () => {
     };
 
     const email:string = "gabriel.velosa@sondotecnica.com.br";
-    let emailSchema = z.email('O email deve pertencer ao domínio @sondotecnica.com.br' ).includes('@sondotecnica.com.br');
+    const emailSchema = z.email().endsWith('@sondotecnica.com.br');
     const emailValidation = emailSchema.safeParse(email);
 
     const pass:string | number = "123456"; 
-    let passwordSchema = z.string().min(6, 'A senha precisa ter no mínimo 6 caracteres').max(12, 'A senha pode ter no máximo 12 caracteres');
+    const passwordSchema = z.string().min(6, 'A senha precisa ter no mínimo 6 caracteres').max(12, 'A senha pode ter no máximo 12 caracteres');
     const passwordValidation = passwordSchema.safeParse(pass);
 
-    const confirmLogin = ():void => {
-        setShowError(false);
-        setShowError(false);
-        if (username === "" || password === ""){ 
-            setShowError(false);
-            setShowErrorMiss(true);
-        } else if (!emailValidation.success){
-            alert(emailValidation.error.message);
-        } else if (!passwordValidation.success){
-            alert(passwordValidation.error.message);
-        } else if (username === email && password === pass){
-                alert("Login efetuado com sucesso!");
-        } else {
-            setShowError(true); 
-            setShowErrorMiss(false);
+const confirmLogin = (): void => {
+    setEmailValidationError(false);
+    setPasswordValidationError(false);
+    setShowError(false); 
+    setShowErrorMiss(false); 
+
+    if (username === "" || password === "") {
+        setShowErrorMiss(true); 
+        return; 
+    }
+    
+    const isEmailInvalid = !emailValidation.success;
+    const isPasswordInvalid = !passwordValidation.success;
+
+    if (isEmailInvalid || isPasswordInvalid) {
+        if (isEmailInvalid) {
+            setEmailValidationError(true);
         }
-    };
+        if (isPasswordInvalid) {
+            setPasswordValidationError(true);
+        }
+        return; 
+    }
+
+    if (username === email && password === pass) {
+        alert("Login efetuado com sucesso!");
+    } else {
+        setShowError(true); 
+    }
+};
 
     return (
         <div className='container'>
@@ -61,10 +77,19 @@ const login:React.FC = () => {
                     <input type="email" placeholder='Email' onChange={(e) => setUsername(e.target.value)}/>
                     <FaUser className='icon' />
                 </div>
+
+                {emailValidationError && (
+                    <p className='email-error'> <IoIosWarning className='warning' /> O email deve pertencer ao dominio Sondotecnica (@sondotecnica.com.br).</p> 
+                )}
+
                 <div className='input-field'>
                     <input type='password' placeholder='Senha' onChange={(e) => setPassword(e.target.value)}/>
                     <FaLock className='icon' />
                 </div>
+
+                {passwordValidationError && (
+                    <p className='email-error'> <IoIosWarning className='warning' /> A senha deve ter entre 6 e 12 caracteres.</p> 
+                )}
 
                 <div className='recall-forget'>
                     <label>

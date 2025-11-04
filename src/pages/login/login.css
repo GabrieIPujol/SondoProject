@@ -131,7 +131,7 @@
     display: flex;
     position: relative;
     align-items: center; 
-    background-color: rgba(189, 52, 52, 0.87);
+    background-color: rgba(188, 52, 52, 0.87);
     border-radius: 7px;
     padding: 5px !important;
     margin-top: 20px;
@@ -175,4 +175,20 @@
     text-decoration: none;
     text-shadow: none;
     color: white;
+}
+
+.email-error{
+    color: #fff;
+    padding-left: 10px;
+    padding-right: 10px;
+    font-size: 16px;
+    font-weight: 500;
+    margin-bottom: 35px;
+}
+
+.email-error .warning{
+    color: yellow;
+    font-size: 20px;
+    vertical-align: middle;
+    margin-bottom: 5px;
 }
