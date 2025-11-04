@@ -38,36 +38,36 @@ const login:React.FC = () => {
     const passwordSchema = z.string().min(6, 'A senha precisa ter no mínimo 6 caracteres').max(12, 'A senha pode ter no máximo 12 caracteres');
     const passwordValidation = passwordSchema.safeParse(pass);
 
-const confirmLogin = (): void => {
-    setEmailValidationError(false);
-    setPasswordValidationError(false);
-    setShowError(false); 
-    setShowErrorMiss(false); 
+    const confirmLogin = (): void => {
+        setEmailValidationError(false);
+        setPasswordValidationError(false);
+        setShowError(false); 
+        setShowErrorMiss(false); 
 
-    if (username === "" || password === "") {
-        setShowErrorMiss(true); 
-        return; 
-    }
-    
-    const isEmailInvalid = !emailValidation.success;
-    const isPasswordInvalid = !passwordValidation.success;
-
-    if (isEmailInvalid || isPasswordInvalid) {
-        if (isEmailInvalid) {
-            setEmailValidationError(true);
+        if (username === "" || password === "") {
+            setShowErrorMiss(true); 
+            return; 
         }
-        if (isPasswordInvalid) {
-            setPasswordValidationError(true);
-        }
-        return; 
-    }
+        
+        const isEmailInvalid = !emailValidation.success;
+        const isPasswordInvalid = !passwordValidation.success;
 
-    if (username === email && password === pass) {
-        alert("Login efetuado com sucesso!");
-    } else {
-        setShowError(true); 
-    }
-};
+        if (isEmailInvalid || isPasswordInvalid) {
+            if (isEmailInvalid) {
+                setEmailValidationError(true);
+            }
+            if (isPasswordInvalid) {
+                setPasswordValidationError(true);
+            }
+            return; 
+        }
+
+        if (username === email && password === pass) {
+            alert("Login efetuado com sucesso!");
+        } else {
+            setShowError(true); 
+        }
+    };
 
     return (
         <div className='container'>
