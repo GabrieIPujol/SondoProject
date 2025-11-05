@@ -30,6 +30,7 @@ const login:React.FC = () => {
         e.preventDefault();
     };
 
+    //Transformar o usuario em objeto
     const email:string = "gabriel.velosa@sondotecnica.com.br";
     const emailSchema = z.email().endsWith('@sondotecnica.com.br');
     const emailValidation = emailSchema.safeParse(email);
@@ -38,7 +39,7 @@ const login:React.FC = () => {
     const passwordSchema = z.string().min(6, 'A senha precisa ter no mínimo 6 caracteres').max(12, 'A senha pode ter no máximo 12 caracteres');
     const passwordValidation = passwordSchema.safeParse(pass);
 
-    const confirmLogin = (): void => {
+    const confirmLogin = ():void => {
         setEmailValidationError(false);
         setPasswordValidationError(false);
         setShowError(false); 
@@ -52,6 +53,7 @@ const login:React.FC = () => {
         const isEmailInvalid = !emailValidation.success;
         const isPasswordInvalid = !passwordValidation.success;
 
+        //Tentar add o Switch case aqui
         if (isEmailInvalid || isPasswordInvalid) {
             if (isEmailInvalid) {
                 setEmailValidationError(true);
@@ -59,7 +61,7 @@ const login:React.FC = () => {
             if (isPasswordInvalid) {
                 setPasswordValidationError(true);
             }
-            return; 
+            return;  
         }
 
         if (username === email && password === pass) {

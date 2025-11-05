@@ -1,5 +1,8 @@
-function CreateAccount (){
-    return <h1>Crie sua conta</h1>;
+
+const CreateAccount = () => {
+  return (
+    <div>CreateAccount</div>
+  )
 }
 
 export default CreateAccount
