@@ -1,4 +1,4 @@
-.container{
+.container {
     width: 450px;
     background-color: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
@@ -7,20 +7,20 @@
     border-radius: 10px;
 }
 
-.container h1{
+.container h1 {
     text-align: center;
     font-size: 30px;
     color: #fff;
 }
 
-.input-field{
+.input-field {
     position: relative;
     width: 100%;
     height: 50px;
     margin: 30px auto;
 }
 
-.input-field input{
+.input-field input {
     width: 100%;
     height: 100%;
     background-color: transparent;
@@ -32,12 +32,12 @@
     padding: 20px 25px;
 }
 
-.input-field input::placeholder{
+.input-field input::placeholder {
     color: #fff;
     font-size: 16px;
 }
 
-.input-field .icon{
+.input-field .icon {
     position: absolute;
     right: 25px;
     top: 50%;
@@ -46,33 +46,33 @@
     color: #fff;
 }
 
-.input-field input:focus{
+.input-field input:focus {
     border: 2px solid #fff;
 }
 
-.container .recall-forget{
+.container .recall-forget {
     display: flex;
     justify-content: space-between;
     font-size: 14.5px;
     margin: -15px 0 15px;
 }
 
-.recall-forget label{
+.recall-forget label {
     display: inline-flex;
     color: #fff;
 }
 
-.recall-forget input{
+.recall-forget input {
     appearance: none;
     margin-left: 3px;
-    width: 14px; 
+    width: 14px;
     height: 14px;
-    border-radius: 5px; 
+    border-radius: 5px;
     background-color: #fff;
     cursor: pointer;
-    margin-right: 6px; 
-    vertical-align: middle; 
-    position: relative; 
+    margin-right: 6px;
+    vertical-align: middle;
+    position: relative;
     border: 2px solid #000;
     transition: 1s;
 }
@@ -85,7 +85,7 @@
     border: 2px solid #fff;
 }
 
-.btn{
+.btn {
     width: 100%;
     height: 50px;
     background-color: #fff;
@@ -99,14 +99,14 @@
     text-shadow: none;
 }
 
-.container .signup-link{
+.container .signup-link {
     text-align: center;
     margin: 20px 0 10px;
     font-size: 15px;
     color: #fff;
 }
 
-.link{
+.link {
     background-color: transparent;
     border: none;
     color: #fff;
@@ -114,37 +114,37 @@
     text-shadow: none;
 }
 
-.link:hover{
+.link:hover {
     text-decoration: underline;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: #000;
     color: #fff;
 }
 
-.btn:active{
+.btn:active {
     transform: scale(0.95);
 }
 
-.singin-error{
+.singin-error {
     display: flex;
     position: relative;
-    align-items: center; 
+    align-items: center;
     background-color: rgba(188, 52, 52, 0.87);
     border-radius: 7px;
     padding: 5px !important;
     margin-top: 20px;
 }
 
-.icon-error{
+.icon-error {
     display: flex;
     position: absolute;
     font-size: 24px;
     color: white;
 }
 
-.singin-error p{
+.singin-error p {
     display: flex;
     padding-left: 30px;
     text-decoration: none;
@@ -152,24 +152,24 @@
     color: white;
 }
 
-.singin-error-missing{
+.singin-error-missing {
     display: flex;
     position: relative;
-    align-items: center; 
+    align-items: center;
     background-color: rgb(255, 140, 0, 0.77);
-    border-radius: 7px; 
+    border-radius: 7px;
     padding: 5px !important;
     margin-top: 20px;
 }
 
-.icon-error-missing{
+.icon-error-missing {
     display: flex;
     position: absolute;
     font-size: 24px;
     color: white;
 }
 
-.singin-error-missing p{
+.singin-error-missing p {
     display: flex;
     padding-left: 30px;
     text-decoration: none;
@@ -177,7 +177,7 @@
     color: white;
 }
 
-.email-error{
+.email-error {
     color: #fff;
     padding-left: 10px;
     padding-right: 10px;
@@ -186,9 +186,102 @@
     margin-bottom: 35px;
 }
 
-.email-error .warning{
+.email-error .warning {
     color: yellow;
     font-size: 20px;
     vertical-align: middle;
     margin-bottom: 5px;
+}
+
+@media screen and (max-width: 480px) {
+    .container {
+        width: 90%;
+        padding: 20px;
+        margin: 0 auto;
+    }
+
+    .container h1 {
+        font-size: 24px;
+    }
+
+    .input-field {
+        height: 45px;
+        margin: 20px auto;
+    }
+
+    .input-field input {
+        font-size: 14px;
+        padding: 15px 20px;
+    }
+
+    .input-field input::placeholder {
+        font-size: 14px;
+    }
+
+    .input-field .icon {
+        font-size: 16px;
+        right: 20px;
+    }
+
+    .container .recall-forget {
+        flex-direction: column;
+        gap: 10px;
+        align-items: center;
+    }
+
+    .btn {
+        height: 45px;
+        font-size: 14px;
+    }
+
+    .container .signup-link {
+        font-size: 14px;
+    }
+
+    .email-error {
+        font-size: 14px;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 768px) {
+    .container {
+        width: 70%;
+        padding: 30px;
+    }
+
+    .container h1 {
+        font-size: 26px;
+    }
+}
+
+@media screen and (max-height: 600px) {
+    .container {
+        margin: 10px auto;
+        padding: 20px;
+    }
+
+    .input-field {
+        margin: 15px auto;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .container {
+        width: 95%;
+        padding: 15px;
+    }
+
+    .container h1 {
+        font-size: 20px;
+    }
+
+    .singin-error p,
+    .singin-error-missing p {
+        font-size: 12px;
+    }
+
+    .icon-error,
+    .icon-error-missing {
+        font-size: 20px;
+    }
 }

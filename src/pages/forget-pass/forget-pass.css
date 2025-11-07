@@ -1,4 +1,4 @@
-.app{
+.app {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -8,7 +8,7 @@
     background-position: center;
 }
 
-.container{
+.container {
     width: 450px;
     background-color: rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(10px);
@@ -17,20 +17,20 @@
     border-radius: 10px;
 }
 
-.container h1{
+.container h1 {
     text-align: center;
     font-size: 30px;
     color: #fff;
 }
 
-.input-field{
+.input-field {
     position: relative;
     width: 100%;
     height: 50px;
     margin: 30px auto;
 }
 
-.input-field input{
+.input-field input {
     width: 100%;
     height: 100%;
     background-color: transparent;
@@ -42,12 +42,12 @@
     padding: 20px 25px;
 }
 
-.input-field input::placeholder{
+.input-field input::placeholder {
     color: #fff;
     font-size: 16px;
 }
 
-.input-field .icon{
+.input-field .icon {
     position: absolute;
     right: 25px;
     top: 50%;
@@ -56,7 +56,7 @@
     color: #fff;
 }
 
-.input-field input:focus{
+.input-field input:focus {
     border: 2px solid #fff;
 }
 
@@ -66,7 +66,7 @@
     margin: 0;
 }
 
-.btn{
+.btn {
     width: 100%;
     height: 50px;
     background-color: #fff;
@@ -80,14 +80,14 @@
     text-shadow: none;
 }
 
-.container .signup-link{
+.container .signup-link {
     text-align: center;
     margin: 20px 0 10px;
     font-size: 15px;
     color: #fff;
 }
 
-.link{
+.link {
     background-color: transparent;
     border: none;
     color: #fff;
@@ -95,40 +95,172 @@
     text-shadow: none;
 }
 
-.link:hover{
+.link:hover {
     text-decoration: underline;
 }
 
-.btn:hover{
+.btn:hover {
     background-color: #000;
     color: #fff;
 }
 
-.btn:active{
+.btn:active {
     transform: scale(0.95);
 }
 
-.singin-error{
+.singin-error {
     display: flex;
     position: relative;
-    align-items: center; 
+    align-items: center;
     background-color: rgba(188, 52, 52, 0.87);
     border-radius: 7px;
     padding: 5px !important;
     margin-top: 20px;
 }
 
-.icon-error{
+.icon-error {
     display: flex;
     position: absolute;
     font-size: 24px;
     color: white;
 }
 
-.singin-error p{
+.singin-error p {
     display: flex;
     padding-left: 30px;
     text-decoration: none;
     text-shadow: none;
     color: white;
+}
+
+@media (max-width: 1024px) {
+    .container {
+        padding: 32px;
+    }
+
+    .container h1 {
+        font-size: 26px;
+    }
+
+    .input-field {
+        height: 48px;
+        margin: 24px 0;
+    }
+
+    .input-field input {
+        font-size: 15px;
+        padding: 18px 22px;
+        border-radius: 36px;
+    }
+
+    .input-field .icon {
+        right: 20px;
+        font-size: 17px;
+    }
+
+    .btn {
+        height: 48px;
+        font-size: 15px;
+        border-radius: 36px;
+    }
+}
+
+@media (max-width: 768px) {
+    .app {
+        padding: 24px;
+        background-position: center top;
+        background-attachment: scroll;
+    }
+
+    .container {
+        width: 92%;
+        padding: 28px;
+        border-radius: 8px;
+    }
+
+    .container h1 {
+        font-size: 22px;
+    }
+
+    .input-field {
+        height: 44px;
+        margin: 20px 0;
+    }
+
+    .input-field input {
+        padding: 14px 18px;
+        font-size: 15px;
+        border-radius: 34px;
+    }
+
+    .input-field .icon {
+        right: 16px;
+        font-size: 16px;
+    }
+
+    .btn {
+        height: 44px;
+        font-size: 15px;
+        border-radius: 34px;
+    }
+
+    .container .signup-link {
+        font-size: 14px;
+    }
+}
+
+@media (max-width: 480px) {
+    .app {
+        padding: 16px;
+        background-position: center top;
+    }
+
+    .container {
+        width: 100%;
+        padding: 18px;
+        border-radius: 8px;
+        border-width: 1px;
+    }
+
+    .container h1 {
+        font-size: 20px;
+    }
+
+    .input-field {
+        height: 42px;
+        margin: 14px 0;
+    }
+
+    .input-field input {
+        padding: 12px 14px;
+        font-size: 14px;
+    }
+
+    .input-field .icon {
+        right: 12px;
+        font-size: 14px;
+    }
+
+    .btn {
+        height: 42px;
+        font-size: 14px;
+        border-radius: 30px;
+    }
+
+    .singin-error {
+        padding: 6px 10px !important;
+        margin-top: 12px;
+    }
+
+    .singin-error p {
+        padding-left: 28px;
+        font-size: 13px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .container {
+        transition: none;
+        backdrop-filter: none;
+    }
 }
