@@ -32,7 +32,7 @@ const login:React.FC = () => {
 
     //Transformar o usuario em objeto
     const email:string = "gabriel.velosa@sondotecnica.com.br";
-    const emailSchema = z.email().endsWith('@sondotecnica.com.br');
+    const emailSchema = z.string().email().endsWith('@sondotecnica.com.br');
     const emailValidation = emailSchema.safeParse(email);
 
     const pass:string | number = "123456"; 

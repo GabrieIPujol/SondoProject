@@ -8,7 +8,14 @@ const ForgetPass = () => {
 
     const navigate = useNavigate()
     function onLoginClick(){
+        if (email !== username || rec !== recCode){
+            return;
+        }
         navigate('/SondoProject') 
+    }
+
+    function onLoginClickBack(){
+        navigate('/SondoProject')
     }
 
     const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
@@ -18,6 +25,7 @@ const ForgetPass = () => {
 
     const [showError, setShowError] = useState<boolean>(false);
 
+    //Transformar o usuario em objeto
     const email:string = "gabriel.velosa@sondotecnica.com.br";
     const [username, setUsername] = useState<string>("");
 
@@ -47,15 +55,15 @@ const ForgetPass = () => {
                         <input type='number' placeholder='Código de Recuperação' onChange={(e) => setRecCode(Number(e.target.value))} />
                         <FaLock className='icon' />
                     </div>
-                    <button className='btn' onClick={confirmEmail}>Recuperar Senha</button>
+                    <button className='btn' onClick={() => { confirmEmail(); onLoginClick(); }}>Recuperar Senha</button>
                     <div className='signup-link'>
-                        <p>Lembrou sua senha? <button className='link' onClick={onLoginClick}>Tela de Login</button></p>
+                        <p>Lembrou sua senha? <button className='link' onClick={onLoginClickBack}>Tela de Login</button></p>
                     </div>
 
                     {showError && (
                         <div className='singin-error'>
                             <CiWarning className='icon-error' />
-                            <p>Seu email ou senha estão incorretos!</p>
+                            <p>Seu email ou código estão incorretos!</p>
                         </div>
                     )}
                 </form>
