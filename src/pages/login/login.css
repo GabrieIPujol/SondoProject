@@ -46,6 +46,18 @@
     color: #fff;
 }
 
+.pass-icon {
+    background-color: transparent;
+    border: none;
+    position: absolute;
+    right: 25px;
+    top: 53%;
+    transform: translateY(-50%);
+    font-size: 18px;
+    color: #fff;
+    cursor: pointer;
+}
+
 .input-field input:focus {
     border: 2px solid #fff;
 }
@@ -116,6 +128,7 @@
 
 .link:hover {
     text-decoration: underline;
+    cursor: pointer;
 }
 
 .btn:hover {
