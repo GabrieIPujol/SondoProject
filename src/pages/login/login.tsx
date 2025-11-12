@@ -33,11 +33,11 @@ const login: React.FC = () => {
     //Transformar o usuario em objeto
     const email: string = "gabriel.velosa@sondotecnica.com.br";
     const emailSchema = z.string().email().endsWith('@sondotecnica.com.br');
-    const emailValidation = emailSchema.safeParse(email);
+    const emailValidation = emailSchema.safeParse(username);
 
     const pass: string | number = "123456";
-    const passwordSchema = z.string().min(6, 'A senha precisa ter no mínimo 6 caracteres').max(12, 'A senha pode ter no máximo 12 caracteres');
-    const passwordValidation = passwordSchema.safeParse(pass);
+    const passwordSchema = z.string().endsWith(pass).min(6, 'A senha precisa ter no mínimo 6 caracteres').max(12, 'A senha pode ter no máximo 12 caracteres');
+    const passwordValidation = passwordSchema.safeParse(password);
 
     const confirmLogin = (): void => {
         setEmailValidationError(false);
@@ -50,25 +50,23 @@ const login: React.FC = () => {
             return;
         }
 
-        const isEmailInvalid = !emailValidation.success;
-        const isPasswordInvalid = !passwordValidation.success;
+        const isEmailInvalid:Boolean = !emailValidation.success;
+        const isPasswordInvalid:Boolean = !passwordValidation.success;
 
-        //Tentar add o Switch case aqui
         if (isEmailInvalid || isPasswordInvalid) {
-            if (isEmailInvalid) {
-                setEmailValidationError(true);
-            }
             if (isPasswordInvalid) {
                 setPasswordValidationError(true);
+                setShowError(true);
             }
-            return;
+            if (isEmailInvalid) {
+                setEmailValidationError(true);
+                setShowError(true);
+            } return;
         }
 
         if (username === email && password === pass) {
             alert("Login efetuado com sucesso!");
-        } else {
-            setShowError(true);
-        }
+        } return
     };
 
     return (
@@ -78,20 +76,18 @@ const login: React.FC = () => {
                 <div className='input-field'>
                     <input type="email" placeholder='Email' onChange={(e) => setUsername(e.target.value)} />
                     <FaUser className='icon' />
+                    {emailValidationError && (
+                        <p className='error'> <IoIosWarning className='warning' /> O email está incorreto.</p>
+                    )}
                 </div>
-
-                {emailValidationError && (
-                    <p className='email-error'> <IoIosWarning className='warning' /> O email deve pertencer ao dominio Sondotecnica (@sondotecnica.com.br).</p>
-                )}
 
                 <div className='input-field'>
                     <input type='password' placeholder='Senha' onChange={(e) => setPassword(e.target.value)} />
                     <FaLock className='icon' />
+                    {passwordValidationError && (
+                        <p className='error'> <IoIosWarning className='warning' /> A senha está incorreta.</p>
+                    )}
                 </div>
-
-                {passwordValidationError && (
-                    <p className='email-error'> <IoIosWarning className='warning' /> A senha deve ter entre 6 e 12 caracteres.</p>
-                )}
 
                 <div className='recall-forget'>
                     <label>
